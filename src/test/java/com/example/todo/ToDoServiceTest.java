@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -18,10 +20,11 @@ public class ToDoServiceTest {
         toDoRepository.save(todoSample);
         ToDoService toDoService = new ToDoService(toDoRepository);
 
-        ToDo firstResult = toDoService.findAll().get(0);
+        List<ToDo> toDoList = toDoService.findAll();
+        ToDo lastToDo = toDoList.get(toDoList.size()-1);
 
-        assertEquals(todoSample.getText(), firstResult.getText());
-        assertEquals(todoSample.isCompleted(), firstResult.isCompleted());
-        assertEquals(todoSample.getId(), firstResult.getId());
+        assertEquals(todoSample.getText(), lastToDo.getText());
+        assertEquals(todoSample.isCompleted(), lastToDo.isCompleted());
+        assertEquals(todoSample.getId(), lastToDo.getId());
     }
 }
