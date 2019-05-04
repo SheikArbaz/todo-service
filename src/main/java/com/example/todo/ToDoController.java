@@ -14,7 +14,7 @@ public class ToDoController {
     @Autowired
     private ToDoService toDoService;
 
-    @GetMapping("/todo")
+    @GetMapping("/todos")
     ResponseEntity<List<ToDo>> getAllToDos() {
         return new ResponseEntity<>(toDoService.findAll(), HttpStatus.OK);
     }

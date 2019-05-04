@@ -36,7 +36,7 @@ class ToDoControllerTest {
         toDoList.add(new ToDo(2L,"Seep Twice",true));
         when(toDoService.findAll()).thenReturn(toDoList);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/todo")
+        mockMvc.perform(MockMvcRequestBuilders.get("/todosgi")
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(jsonPath("$", hasSize(2))).andDo(print());
     }
