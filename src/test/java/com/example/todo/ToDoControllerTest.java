@@ -51,10 +51,11 @@ class ToDoControllerTest {
         ToDo eatToDo = new ToDo(1L, "Eat thrice", true);
         when(toDoService.save(any(ToDo.class))).thenReturn(eatToDo);
         ObjectMapper objectMapper = new ObjectMapper();
+        String eatToDoJSON = objectMapper.writeValueAsString(eatToDo);
 
         ResultActions result = mockMvc.perform(post("/todos")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(eatToDo))
+                .content(eatToDoJSON)
         );
 
         result.andExpect(status().isCreated())

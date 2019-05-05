@@ -17,6 +17,6 @@ public class ToDoService {
     }
 
     public ToDo save(ToDo toDo) {
-        return new ToDo();
+        return toDoRepository.save(toDo);
     }
 }
