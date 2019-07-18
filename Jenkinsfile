@@ -24,6 +24,7 @@ pipeline {
     post {
         always {
             echo 'This will always run!!'
+            junit 'build/reports/**/*.xml'
         }
         success {
             echo 'Successful!!'
